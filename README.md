@@ -40,3 +40,9 @@ grid(x::Int64, y::Int64; show = [-x, x, -y, y], bg="black", showaxis = true, siz
 |showaxis|Bool|true|x축, y축 표시 여부
 |size|Tuple{Int, Int}|(800, 600)|그래프 크기(가로, 세로)
 |dpi|Int|100|해상도(DPI)
+
+### 사용 예제
+```julia
+grid(4,4)
+```
+(https://github.com/user-attachments/assets/1c678b26-28a0-4596-ad16-e4f2519c976e)
