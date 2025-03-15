@@ -12,7 +12,8 @@ This repository provides 2D linear algebra visualization package of Julia.
   - [사용 예제](#사용-예제)
 - [벡터를 표시하는 함수](#벡터를-표시하는-함수)
   - [원점에서 벡터 생성하기](#원점에서-벡터-생성하기)
-  - [시점, 종점이 있는 벡터 생성하기](#시점,-종점이-있는-벡터-생성하기)
+  - [원점에서 벡터 생성하기](#원점에서-벡터-생성하기)
+  - [사용 예제](#사용-예제)
 ## LinViz2D란?
 
 Linear Algebra Visualization in 2-Dimension의 약자로 2차원 벡터에 대한 선형대수학적 시각화 기능을 제공하는 줄리아 파일입니다.
@@ -126,6 +127,8 @@ show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false
 |iscord|Bool|false|벡터의 좌표를 표시할지 여부
 |cordsize|Int|10|좌표 글씨 크기
 |cord_color|Symbol|:white|좌표 글씨 색상
+
+### 사용 예제
 
 
 
