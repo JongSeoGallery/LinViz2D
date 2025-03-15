@@ -1,5 +1,5 @@
 # LinViz2D
-This repository provides linear algebra visualization package of Julia.
+This repository provides 2D linear algebra visualization package of Julia.
 
 본 리포지터리에선 줄리아의 2차원 선형대수 시각화를 다루는 파일인 LinViz2D를 제공합니다.
 
@@ -7,6 +7,8 @@ This repository provides linear algebra visualization package of Julia.
 - [LinViz2D란?](#LinViz2D란?)
 - [파일 실행하는 방법](#파일-실행하는-방법)
 - [기본 좌표축 생성](#기본-좌표축-생성)
+  - [사용 예제](#사용-예제)
+- [좌표축과 표준기저를 그려주는 함수](#좌표축과-표준기저를-그려주는-함수)
   - [사용 예제](#사용-예제)
 ## LinViz2D란?
 
@@ -54,3 +56,33 @@ grid(4,4, show = [-4, 4, -1, 3], bg = "pink", showaxis = true, size = (800, 400)
 ```
 
 ![Uploaded Image](https://github.com/user-attachments/assets/be29ca78-26e3-41d4-87a4-1ec60473d24f)
+
+## 좌표축과 표준기저를 그려주는 함수
+기본 좌표축과 표준기저를 그려주는 함수는 grid_sb()함수를 사용합니다.
+grid_sb()는 grid with standard basis라는 뜻 입니다.
+
+1. 기능 설명
+grid_sb()함수는 좌표축과 격자를 그림과 동시에 표준기저를 시각화 해주는 함수입니다.
+* 입력 매개변수는 grid()함수와 동일합니다.
+
+2. 매개변수 설명
+```julia
+grid_sb(x::Int64, y::Int64; bg="black", showaxis = true, size = (800, 600), dpi = 100)
+```
+|매개변수|타입|기본값|설명
+|-----|----|----|----|
+|x|Int64|(필수)|x축 방향의 최대 좌표값
+|y|Int64|(필수)|y축 방향의 최대 좌표값
+|show|Vector{Int}|[-x, x, -y, y]|그래프의 표시 범위(x_min, x_max, y_min, y_max)
+|bg|String, RGB{Float64}|"black"|배경 색상
+|gc|String, RGB{Float64}|palette(:default)[1]|격자 색상
+|showaxis|Bool|true|x축, y축 표시 여부
+|size|Tuple{Int, Int}|(800, 600)|그래프 크기(가로, 세로)
+|dpi|Int|100|해상도(DPI)
+
+### 사용 예제
+```julia
+grid_sb(3,2,bg="black", gc = "white", showaxis = false, dpi = 200)
+```
+![Uploaded Image](https://github.com/user-attachments/assets/47d2e9fe-a0f8-44a2-9231-edb887fc2f1c)
+
