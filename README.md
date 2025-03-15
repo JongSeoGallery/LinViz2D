@@ -100,12 +100,12 @@ show_vector()함수는 메서드가 2개입니다.
 LinViz2D의 철학은 grid를 생성한 다음, 벡터 혹은 이외의 것을 추가히는 것이기 때문에, show_vector()함수를 실행하기 위해선 기본적으로 grid()함수를 실행하여 grid를 생성해야 합니다.
 
 ### 원점에서 벡터 생성하기
-2-1. 매개변수 설명
+2.1. 매개변수 설명
 ```julia
 show_vector(vector::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
 ```
 ### 시점, 종점이 있는 벡터 생성하기
-2-2. 매개변수 설명
+2.2. 매개변수 설명
 ```julia
 show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
 ```
