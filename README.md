@@ -82,7 +82,6 @@ grid_sb(x::Int64, y::Int64; bg="black", showaxis = true, size = (800, 600), dpi 
 
 ### 사용 예제
 ```julia
-grid_sb(3,2,bg="black", gc = "white", showaxis = false, dpi = 200)
+grid_sb(3,2,bg="black", gc = "white", showaxis = false, dpi = 100)
 ```
-![Uploaded Image](https://github.com/user-attachments/assets/47d2e9fe-a0f8-44a2-9231-edb887fc2f1c)
-
+![Uploaded Image](https://github.com/user-attachments/assets/284db54a-2834-4ee6-93ac-41feadc1d9c3)
