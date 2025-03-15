@@ -48,3 +48,9 @@ grid(x::Int64, y::Int64; show = [-x, x, -y, y], bg="black", showaxis = true, siz
 grid(4,4)
 ```
 ![Uploaded Image](https://github.com/user-attachments/assets/1c678b26-28a0-4596-ad16-e4f2519c976e)
+
+```julia
+grid(4,4, show = [-4, 4, -1, 3], bg = "pink", showaxis = true, size = (800, 400))
+```
+
+![Uploaded Image](https://github.com/user-attachments/assets/be29ca78-26e3-41d4-87a4-1ec60473d24f)
