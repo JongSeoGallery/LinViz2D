@@ -110,13 +110,24 @@ show_vector(vector::Vector; color = palette(:default)[2], iscord = false, cordsi
 |vector|Vector{Float64}|없음|벡터(x, y) 좌표
 |color|Symbol|palette(:default)[2]|벡터|색상
 |iscord|Bool|false|벡터의 좌표를 표시할지 여부
-|cordsize|Int	10|좌표 글씨 크기
+|cordsize|Int|10|좌표 글씨 크기
 |cord_color|Symbol|:white|좌표 글씨 색상
+
 ### 시점, 종점이 있는 벡터 생성하기
 2.2. 매개변수 설명
 ```julia
 show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
 ```
+|매개변수|타입|기본값|설명|
+|----|----|----|----|
+|p1|Vector{Float64}|없음|벡터의 시작점 (x1, y1)
+|p2|Vector{Float64}|없음|벡터의 끝점 (x2, y2)
+|color|Symbol|palette(:default)[2]|벡터 색상
+|iscord|Bool|false|벡터의 좌표를 표시할지 여부
+|cordsize|Int|10|좌표 글씨 크기
+|cord_color|Symbol|:white|좌표 글씨 색상
+
+
 
 
 
