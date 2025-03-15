@@ -5,10 +5,13 @@ This repository provides linear algebra visualization package of Julia.
 
 # 목차
 - [LinViz2D란?](#LinViz2D란?)
-- [파일 실행하는 방법](#파일실행하는방법)
-
+- [파일 실행하는 방법](#파일-실행하는-방법)
+- [기본 좌표축 생성]
 ## LinViz2D란?
 
 Linear Algebra Visualization in 2-Dimension의 약자로 2차원 벡터에 대한 선형대수학적 시각화 기능을 제공하는 줄리아 파일입니다.
 
 ## 파일 실행하는 방법
+```julia
+include("LinViz2D.jl")
+```
