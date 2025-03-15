@@ -45,4 +45,4 @@ grid(x::Int64, y::Int64; show = [-x, x, -y, y], bg="black", showaxis = true, siz
 ```julia
 grid(4,4)
 ```
-(https://github.com/user-attachments/assets/1c678b26-28a0-4596-ad16-e4f2519c976e)
+![Uploaded Image](https://github.com/user-attachments/assets/1c678b26-28a0-4596-ad16-e4f2519c976e)
