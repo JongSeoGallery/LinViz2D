@@ -10,6 +10,9 @@ This repository provides 2D linear algebra visualization package of Julia.
   - [사용 예제](#사용-예제)
 - [좌표축과 표준기저를 그려주는 함수](#좌표축과-표준기저를-그려주는-함수)
   - [사용 예제](#사용-예제)
+- [벡터를 표시하는 함수](#벡터를-표시하는-함수)
+  - [원점에서 벡터 생성하기](#원점에서-벡터-생성하기)
+  - [시점, 종점이 있는 벡터 생성하기](#시점,-종점이-있는-벡터-생성하기)
 ## LinViz2D란?
 
 Linear Algebra Visualization in 2-Dimension의 약자로 2차원 벡터에 대한 선형대수학적 시각화 기능을 제공하는 줄리아 파일입니다.
@@ -85,3 +88,27 @@ grid_sb(x::Int64, y::Int64; bg="black", showaxis = true, size = (800, 600), dpi 
 grid_sb(3,2,bg="black", gc = "white", showaxis = false, dpi = 100)
 ```
 ![Uploaded Image](https://github.com/user-attachments/assets/284db54a-2834-4ee6-93ac-41feadc1d9c3)
+
+## 벡터를 표시하는 함수
+벡터를 표시하는 함수는 show_vector()함수를 사용합니다.
+
+1. 기능 설명 
+show_vector()함수는 메서드가 2개입니다. 
+첫 번째 메서드는 기본적으로 벡터의 시점은 원점이기 때문에 원점에서 종점으로 향하는 벡터를 생성합니다.
+두 번째 메서드는 시점과 종점이 있는 벡터를 생성합니다.
+
+LinViz2D의 철학은 grid를 생성한 다음, 벡터 혹은 이외의 것을 추가히는 것이기 때문에, show_vector()함수를 실행하기 위해선 기본적으로 grid()함수를 실행하여 grid를 생성해야 합니다.
+
+### 원점에서 벡터 생성하기
+2-1. 매개변수 설명
+```julia
+show_vector(vector::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
+```
+### 시점, 종점이 있는 벡터 생성하기
+2-2. 매개변수 설명
+```julia
+show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
+```
+
+
+
