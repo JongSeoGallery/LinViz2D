@@ -129,7 +129,12 @@ show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false
 |cord_color|Symbol|:white|좌표 글씨 색상
 
 ### 사용 예제
-
+```julia
+grid(4, 2)
+show_vector([1,1], iscord = true, cordsize = 15)
+show_vector([0, -1], [-2, 1], color = "green")
+```
+![Uploaded Image](https://github.com/user-attachments/assets/97044951-7fe2-4867-9a33-64fc61a17122)
 
 
 
