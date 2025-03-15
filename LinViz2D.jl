@@ -6,7 +6,7 @@ using Plots
 c = palette(:default)
 
 # 좌표축을 그려주는 함수
-function grid(x::Int64, y::Int64;show = [-x, x, -y, y] ,bg="black", showaxis = true, size = (800, 600), dpi = 100)
+function grid(x::Int64, y::Int64;show = [-x, x, -y, y] ,bg="black",gc = c[1], showaxis = true, size = (800, 600), dpi = 100)
     gr(size=size, dpi=dpi)
     c = palette(:default)
     # 한계 설정
@@ -32,11 +32,11 @@ function grid(x::Int64, y::Int64;show = [-x, x, -y, y] ,bg="black", showaxis = t
     plt = plot(xlims = (show[1], show[2]), ylims = (show[3],show[4]), grid = false, aspect_ratio = true, background = bg, showaxis = showaxis)
 
     for i in 1:(2x + 1)
-        plt = plot!([A1[1, i],A2[1, i]],[A1[2, i], A2[2, i]],  ls = :dash, label = false, color = c[1])
+        plt = plot!([A1[1, i],A2[1, i]],[A1[2, i], A2[2, i]],  ls = :dash, label = false, color = gc)
     end
 
     for i in 1:(2y + 1)
-        plt = plot!([B1[1, i],B2[1, i]],[B1[2, i], B2[2, i]],  ls = :dash, label = false, color = c[1])
+        plt = plot!([B1[1, i],B2[1, i]],[B1[2, i], B2[2, i]],  ls = :dash, label = false, color = gc)
     end
     # x축, y축 그리기
     plt = plot!([-x, x], [0, 0], lw = 2, color = "gray", label = false)
