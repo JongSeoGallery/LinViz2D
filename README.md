@@ -37,7 +37,8 @@ grid(x::Int64, y::Int64; show = [-x, x, -y, y], bg="black", showaxis = true, siz
 |x|Int64|(필수)|x축 방향의 최대 좌표값
 |y|Int64|(필수)|y축 방향의 최대 좌표값
 |show|Vector{Int}|[-x, x, -y, y]|그래프의 표시 범위(x_min, x_max, y_min, y_max)
-|bg|String|"black"|배경 색상
+|bg|String, RGB{Float64}|"black"|배경 색상
+|gc|String, RGB{Float64}|palette(:default)[1]|격자 색상
 |showaxis|Bool|true|x축, y축 표시 여부
 |size|Tuple{Int, Int}|(800, 600)|그래프 크기(가로, 세로)
 |dpi|Int|100|해상도(DPI)
