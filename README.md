@@ -1,141 +1,135 @@
-# LinViz2D
-This repository provides 2D linear algebra visualization package of Julia.
+**파일 이름**: LinViz2D.jl  
+**파일 설명**: 2D 선형 대수 개념을 시각화하기 위한 줄리아(Julia) 함수 모음입니다. 좌표계 변환, 벡터 표시, 행렬식 계산, 선형 변환 효과를 직관적으로 보여주는 데 활용됩니다. Plots 패키지를 기반으로 그래픽을 생성하며, **multiple dispatch**를 통해 다양한 입력 유형을 지원합니다.
 
-본 리포지터리에선 줄리아의 2차원 선형대수 시각화를 다루는 파일인 LinViz2D를 제공합니다.
+---
 
-# 목차
-- [LinViz2D란?](#LinViz2D란?)
-- [파일 실행하는 방법](#파일-실행하는-방법)
-- [기본 좌표축 생성](#기본-좌표축-생성)
-  - [사용 예제](#사용-예제)
-- [좌표축과 표준기저를 그려주는 함수](#좌표축과-표준기저를-그려주는-함수)
-  - [사용 예제](#사용-예제)
-- [벡터를 표시하는 함수](#벡터를-표시하는-함수)
-  - [원점에서 벡터 생성하기](#원점에서-벡터-생성하기)
-  - [원점에서 벡터 생성하기](#원점에서-벡터-생성하기)
-  - [사용 예제](#사용-예제)
-## LinViz2D란?
+### 📌 주요 함수 설명
 
-Linear Algebra Visualization in 2-Dimension의 약자로 2차원 벡터에 대한 선형대수학적 시각화 기능을 제공하는 줄리아 파일입니다.
+#### 1. **`grid` 함수**  
+**기능**: 기본 또는 변환된 좌표계의 격자와 축을 생성합니다.  
+- **`grid(x::Int64, y::Int64)`**: `[-x, x]` (가로)와 `[-y, y]` (세로) 범위의 기본 좌표계를 그림니다.  
+- **`grid(x::Int64, y::Int64, matrix::Matrix)`**: 주어진 행렬로 좌표계를 변환한 후 격자를 그림니다.  
 
-## 파일 실행하는 방법
-파일을 실행하기 위해선 본 리포지터리에서 LinViz2D.jl을 다운받은 후 실행하면 됩니다.
+**매개변수**:  
+- `x`, `y`: 좌표계의 범위 (정수).  
+- `matrix` (선택): 2x2 변환 행렬 (예: 회전, 확대 행렬).  
+- `show`: 표시할 축의 범위 (기본값: `[-x, x, -y, y]`).  
+- `bg`: 배경색 (기본값: "black").  
+- `grid`: 격자 표시 여부 (기본값: `true`).  
 
+**예제**:  
 ```julia
-include("LinViz2D.jl")
+# 기본 좌표계 (3x3 범위)
+plt = grid(3, 3, show=[-5,5,-5,5], bg="white")
+
+# 변환 행렬 적용 (45도 회전)
+A = [cos(π/4) -sin(π/4); sin(π/4) cos(π/4)]
+plt = grid(3, 3, A, gc=:lightblue)
 ```
 
-## 기본 좌표축 생성
-기본 좌표축을 생성하기 위해선 grid()함수를 사용합니다.
+---
 
-1. 기능 설명 
-grid()함수는 좌표축과 격자를 그려주는 역할을 합니다.
-* 입력한 x, y 값을 기준으로 좌표 평면을 생성합니다.
-* Plots.jl을 사용하여 점선 격자(grid lines)와 x축, y축을 시각적으로 표시합니다.
-* 배경색, 해상도, 그래프 크기 등의 옵션을 조절할 수 있습니다.
+#### 2. **`grid_sb` 함수**  
+**기능**: 표준 기저 벡터(화살표)가 추가된 좌표계를 그림니다.  
+- **`grid_sb(x::Int64, y::Int64)`**: 기본 기저 벡터 (x축, y축)를 표시합니다.  
+- **`grid_sb(x::Int64, y::Int64, matrix::Matrix)`**: 변환된 기저 벡터를 표시합니다.  
 
-2. 매개변수 설명
+**예제**:  
 ```julia
-grid(x::Int64, y::Int64; show = [-x, x, -y, y], bg="black", showaxis = true, size = (800, 600), dpi = 100)
-```
-|매개변수|타입|기본값|설명
-|-----|----|----|----|
-|x|Int64|(필수)|x축 방향의 최대 좌표값
-|y|Int64|(필수)|y축 방향의 최대 좌표값
-|show|Vector{Int}|[-x, x, -y, y]|그래프의 표시 범위(x_min, x_max, y_min, y_max)
-|bg|String, RGB{Float64}|"black"|배경 색상
-|gc|String, RGB{Float64}|palette(:default)[1]|격자 색상
-|showaxis|Bool|true|x축, y축 표시 여부
-|size|Tuple{Int, Int}|(800, 600)|그래프 크기(가로, 세로)
-|dpi|Int|100|해상도(DPI)
-
-### 사용 예제
-```julia
-grid(4,4)
-```
-![Uploaded Image](https://github.com/user-attachments/assets/1c678b26-28a0-4596-ad16-e4f2519c976e)
-
-```julia
-grid(4,4, show = [-4, 4, -1, 3], bg = "pink", showaxis = true, size = (800, 400))
+# 변환된 기저 벡터 (확대)
+B = [2 0; 0 2]
+plt = grid_sb(2, 2, B, gc=:gray)
 ```
 
-![Uploaded Image](https://github.com/user-attachments/assets/be29ca78-26e3-41d4-87a4-1ec60473d24f)
+---
 
-## 좌표축과 표준기저를 그려주는 함수
-기본 좌표축과 표준기저를 그려주는 함수는 grid_sb()함수를 사용합니다.
-grid_sb()는 grid with standard basis라는 뜻 입니다.
+#### 3. **`show_vector` 함수**  
+**기능**: 벡터를 화살표로 표시하며 좌표값을 추가할 수 있습니다.  
+- **`show_vector(vector::Vector)`**: 원점에서 시작하는 벡터.  
+- **`show_vector(p1::Vector, p2::Vector)`**: `p1`에서 `p2`로 향하는 벡터.  
+- **`show_vector(vector::Vector, matrix::Matrix)`**: 변환된 좌표계에서의 벡터.  
 
-1. 기능 설명
-grid_sb()함수는 좌표축과 격자를 그림과 동시에 표준기저를 시각화 해주는 함수입니다.
-* 입력 매개변수는 grid()함수와 동일합니다.
+**매개변수**:  
+- `color`: 화살표 색상 (기본값: 빨강).  
+- `iscord`: 좌표값 표시 여부 (기본값: `false`).  
 
-2. 매개변수 설명
+**예제**:  
 ```julia
-grid_sb(x::Int64, y::Int64; bg="black", showaxis = true, size = (800, 600), dpi = 100)
-```
-|매개변수|타입|기본값|설명
-|-----|----|----|----|
-|x|Int64|(필수)|x축 방향의 최대 좌표값
-|y|Int64|(필수)|y축 방향의 최대 좌표값
-|show|Vector{Int}|[-x, x, -y, y]|그래프의 표시 범위(x_min, x_max, y_min, y_max)
-|bg|String, RGB{Float64}|"black"|배경 색상
-|gc|String, RGB{Float64}|palette(:default)[1]|격자 색상
-|showaxis|Bool|true|x축, y축 표시 여부
-|size|Tuple{Int, Int}|(800, 600)|그래프 크기(가로, 세로)
-|dpi|Int|100|해상도(DPI)
-
-### 사용 예제
-```julia
-grid_sb(3,2,bg="black", gc = "white", showaxis = false, dpi = 100)
-```
-![Uploaded Image](https://github.com/user-attachments/assets/284db54a-2834-4ee6-93ac-41feadc1d9c3)
-
-## 벡터를 표시하는 함수
-벡터를 표시하는 함수는 show_vector()함수를 사용합니다.
-
-1. 기능 설명 
-show_vector()함수는 메서드가 2개입니다. 
-첫 번째 메서드는 기본적으로 벡터의 시점은 원점이기 때문에 원점에서 종점으로 향하는 벡터를 생성합니다.
-두 번째 메서드는 시점과 종점이 있는 벡터를 생성합니다.
-
-LinViz2D의 철학은 grid를 생성한 다음, 벡터 혹은 이외의 것을 추가히는 것이기 때문에, show_vector()함수를 실행하기 위해선 기본적으로 grid()함수를 실행하여 grid를 생성해야 합니다.
-
-### 원점에서 벡터 생성하기
-2.1. 매개변수 설명
-```julia
-show_vector(vector::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
+plt = grid(3, 3)
+show_vector([2, 1], color=:red, iscord=true)  # (2,1) 벡터
+show_vector([1,1], [3,2], color=:green)       # (1,1) → (3,2)
 ```
 
-|매개변수|타입|기본값|설명|
-|----|----|----|----|
-|vector|Vector{Float64}|없음|벡터(x, y) 좌표
-|color|Symbol|palette(:default)[2]|벡터|색상
-|iscord|Bool|false|벡터의 좌표를 표시할지 여부
-|cordsize|Int|10|좌표 글씨 크기
-|cord_color|Symbol|:white|좌표 글씨 색상
+---
 
-### 시점, 종점이 있는 벡터 생성하기
-2.2. 매개변수 설명
+#### 4. **`span` 함수**  
+**기능**: 주어진 벡터 방향의 무한 직선을 점선으로 표시합니다.  
+**예제**:  
 ```julia
-show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
+span([1, 2], color=:blue)  # 벡터 [1,2] 방향 직선
 ```
-|매개변수|타입|기본값|설명|
-|----|----|----|----|
-|p1|Vector{Float64}|없음|벡터의 시작점 (x1, y1)
-|p2|Vector{Float64}|없음|벡터의 끝점 (x2, y2)
-|color|Symbol|palette(:default)[2]|벡터 색상
-|iscord|Bool|false|벡터의 좌표를 표시할지 여부
-|cordsize|Int|10|좌표 글씨 크기
-|cord_color|Symbol|:white|좌표 글씨 색상
 
-### 사용 예제
+---
+
+#### 5. **`viz_det` 함수**  
+**기능**: 행렬의 열벡터로 형성된 평행사변형과 행렬식 값을 그림니다.  
+**예제**:  
 ```julia
-grid(4, 2)
-show_vector([1,1], iscord = true, cordsize = 15)
-show_vector([0, -1], [-2, 1], color = "green")
+C = [1 2; 3 4]
+viz_det(C, color=:orange)
 ```
-![Uploaded Image](https://github.com/user-attachments/assets/97044951-7fe2-4867-9a33-64fc61a17122)
 
+---
 
+#### 6. **`linearmap` 함수**  
+**기능**: 벡터 또는 단위원에 선형 변환을 적용해 결과를 표시합니다.  
+- **`linearmap(vector::Vector, matrix::Matrix)`**: 단일 벡터 변환.  
+- **`linearmap(matrix::Matrix)`**: 단위원을 변환한 타원 표시.  
 
+**예제**:  
+```julia
+D = [1 -1; 1 1]  # 45도 회전 + 확대
+linearmap([1,0], D, color=:purple)  # 벡터 변환
+linearmap(D)                        # 단위원 변환 결과
+```
 
+---
+
+#### 7. **`unit_circ` 함수**  
+**기능**: 반지름 1의 단위원을 그림니다.  
+**예제**:  
+```julia
+unit_circ(color=:pink)  # 분홍색 단위원
+```
+
+---
+
+### 🚀 통합 예제  
+```julia
+using Plots
+
+# 변환 행렬: 전단(shear) + 회전
+M = [1 0.5; 0.5 1]
+
+# 1. 변환된 격자 생성
+plt = grid_sb(3, 3, M, show=[-5,5,-5,5], bg="white")
+
+# 2. 벡터 [1,1] 변환 후 표시
+show_vector([1, 1], M, color=:red, iscord=true)
+
+# 3. 행렬식 영역 표시
+viz_det(M, color=:teal)
+
+# 4. 단위원 변환
+linearmap(M)
+
+# 5. 결과 출력
+display(plt)
+```
+
+---
+
+### 💡 사용 팁  
+- **패키지 로드**: `using Plots, LinearAlgebra`를 먼저 실행하세요.  
+- **색상 설정**: `palette(:default)`에서 색상 목록을 확인할 수 있습니다.  
+- **행렬 입력**: 2x2 행렬만 지원되며, **열벡터** 기준으로 변환이 적용됩니다.
