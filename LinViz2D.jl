@@ -39,12 +39,12 @@ function grid(x::Int64, y::Int64;show = [-x, x, -y, y] ,bg="black",gc = c[1], gr
             plt = plot!([B1[1, i],B2[1, i]],[B1[2, i], B2[2, i]],  ls = :dash, label = false, color = gc)
         end
         # x축, y축 그리기
-        plt = plot!([-x, x], [0, 0], lw = 2, color = "gray", label = false)
-        plt = plot!([0, 0], [-y, y], lw = 2, color = "gray", label = false)
+        plt = plot!([-x, x], [0, 0], lw = 2, color = "white", label = false)
+        plt = plot!([0, 0], [-y, y], lw = 2, color = "white", label = false)
         return plt
     else
-        plt = plot!([-x, x], [0, 0], lw = 2, color = "gray", label = false)
-        plt = plot!([0, 0], [-y, y], lw = 2, color = "gray", label = false)
+        plt = plot!([-x, x], [0, 0], lw = 2, color = "white", label = false)
+        plt = plot!([0, 0], [-y, y], lw = 2, color = "white", label = false)
         return plt
     end
 end
@@ -93,8 +93,8 @@ function grid(x::Int64, y::Int64,matrix::Matrix; show = [-x, x, -y, y] ,bg="blac
         y1 = matrix * [0 , y]
         y2 = matrix * [0 , -y]
 
-        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "gray", label = false)
-        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "gray", label = false)
+        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "white", label = false)
+        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "white", label = false)
         return plt
     else
         # x축, y축 그리기
@@ -103,11 +103,12 @@ function grid(x::Int64, y::Int64,matrix::Matrix; show = [-x, x, -y, y] ,bg="blac
         y1 = matrix * [0,  y]
         y2 = matrix * [0 ,-y]
 
-        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "gray", label = false)
-        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "gray", label = false)
+        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "white", label = false)
+        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "white", label = false)
         return plt
     end
 end
+
 
 # 좌표축과 표준기저를 그려주는 함수
 function grid_sb(x::Int64, y::Int64;show = [-x, x, -y, y], bg="black",gc = c[1], grid = true, showaxis = true, size = (800, 600), dpi = 100)
@@ -144,12 +145,12 @@ function grid_sb(x::Int64, y::Int64;show = [-x, x, -y, y], bg="black",gc = c[1],
             plt = plot!([B1[1, i],B2[1, i]],[B1[2, i], B2[2, i]],  ls = :dash, label = false, color = gc)
         end
         # x축, y축 그리기
-        plt = plot!([-x, x], [0, 0], lw = 2, color = "gray", label = false)
-        plt = plot!([0, 0], [-y, y], lw = 2, color = "gray", label = false)
+        plt = plot!([-x, x], [0, 0], lw = 2, color = "white", label = false)
+        plt = plot!([0, 0], [-y, y], lw = 2, color = "white", label = false)
     else
         # x축, y축 그리기
-        plt = plot!([-x, x], [0, 0], lw = 2, color = "gray", label = false)
-        plt = plot!([0, 0], [-y, y], lw = 2, color = "gray", label = false)
+        plt = plot!([-x, x], [0, 0], lw = 2, color = "white", label = false)
+        plt = plot!([0, 0], [-y, y], lw = 2, color = "white", label = false)
     end
     
     # 화살표 그기기
@@ -201,8 +202,8 @@ function grid_sb(x::Int64, y::Int64, matrix::Matrix;show = [-x, x, -y, y], bg="b
         y1 = matrix * [0 , y]
         y2 = matrix * [0 , -y]
 
-        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "gray", label = false)
-        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "gray", label = false)
+        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "white", label = false)
+        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "white", label = false)
     else
         # x축, y축 그리기
         x1 = matrix * [-x, 0]
@@ -210,8 +211,8 @@ function grid_sb(x::Int64, y::Int64, matrix::Matrix;show = [-x, x, -y, y], bg="b
         y1 = matrix * [0 , y]
         y2 = matrix * [0 , -y]
 
-        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "gray", label = false)
-        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "gray", label = false)
+        plt = plot!([x1[1], x2[1]], [x1[2], x2[2]], lw = 2, color = "white", label = false)
+        plt = plot!([y1[1], y2[1]], [y1[2], y2[2]], lw = 2, color = "white", label = false)
     end
     
     # 화살표 그기기
@@ -222,8 +223,12 @@ end
 # 벡터를 표시하는 함수
 function show_vector(vector::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
     plt = plot!([0, vector[1]], [0, vector[2]], lw = 3, arrow = true, color = color, label = false)
+
+    x_cord = round(vector[1], digits = 2)
+    y_cord = round(vector[2], digits = 2)
+
     if iscord
-        plt = annotate!(1.15*vector[1], 1.15*vector[2], ("$((vector[1], vector[2]))", cordsize, cord_color))
+        plt = annotate!(1.1*vector[1], 1.1*vector[2], ("$((x_cord,  y_cord))", cordsize, cord_color))
     else
         return plt
     end
@@ -232,25 +237,38 @@ end
 # 시점이 있는 벡터를 표시하는 함수
 function show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
     plt = plot!([p1[1], p2[1]], [p1[2], p2[2]], lw = 3, arrow = true, color = color, label = false)
+
+
     if iscord
-        x = p2[1] + 0.15(p2[1] - p1[1])
-        y = p2[2] + 0.15(p2[1] - p1[1])
+        x = p2[1] + 0.1(p2[1] - p1[1])
+        y = p2[2] + 0.1(p2[1] - p1[1])
+        x_cord = round((p2[1] - p1[1]), digits = 2)
+        y_cord = round((p2[2] - p1[2]), digits = 2)
         plt = annotate!(x, y, ("$(((p2[1] - p1[1]),(p2[2] - p1[2])))", cordsize, cord_color)) 
     else
         return plt
     end
 end
 
-# 기저가 주어질 때 좌표벡터를 표시하는 함수
-function show_vector(vector::Vector, matrix::Matrix; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
-    vector = matrix * vector
-    plt = plot!([0, vector[1]], [0, vector[2]], lw = 3, arrow = true, color = color, label = false)
+
+# 기저가 주어질 때 표준기저에 따른 좌표벡터를 표시하는 함수
+# cord = true이면 표준기저에 따른 좌표벡터를 보여줌
+# cord = false이면 기저에 따른 좌표벡터를 보여줌
+# 기본적인 벡터는 기저에 따른 좌표벡터를 입력해야 함함
+function show_vector(vector::Vector, matrix::Matrix; cord = true ,color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
+    vector1 = matrix * vector
+    plt = plot!([0, vector1[1]], [0, vector1[2]], lw = 3, arrow = true, color = color, label = false)
     if iscord
-        plt = annotate!(1.15*vector[1], 1.15*vector[2], ("$((vector[1], vector[2]))", cordsize, cord_color))
+        if cord
+            plt = annotate!(1.1*vector1[1], 1.1*vector1[2], ("$((vector1[1], vector1[2]))", cordsize, cord_color))
+        else
+            plt = annotate!(1.1*vector1[1], 1.1*vector1[2], ("$((vector[1], vector[2]))", cordsize, cord_color))
+        end
     else
         return plt
     end
 end
+
 
 # 1차원 span을 그려주는 함수
 function span(vector::Vector; color = palette(:default)[1], t = 5, label = false)
@@ -290,9 +308,10 @@ function linearmap(vector::Vector, matrix::Matrix; color = palette(:default)[2],
 end
 
 # 단위원을 그리는 함수
-function unit_circ(theta = 0:0.01:2pi, color = c[1])
-    plot!(cos.(theta), sin.(theta), lw = 3, color = color, label = false)
+function unit_circ(;theta = 0:0.01:2pi, color = c[1], r = 1)
+    plot!(r*cos.(theta), r*sin.(theta), lw = 3, color = color, label = false)
 end
+
 
 # 단위원에 따른 선형변환을 하는 함수
 function linearmap(matrix::Matrix;theta = 0:0.01:2pi, color = c[3])
@@ -302,6 +321,7 @@ function linearmap(matrix::Matrix;theta = 0:0.01:2pi, color = c[3])
     res = matrix * xy_matrix
     plot!(res[1, :], res[2, :], lw = 3, color = color, label = false)
 end
+
 # 고유벡터를 그리는 함수
 function draw_eigenvec(matrix::Matrix; color = "gray", iscord = false, cordsize = 10, cord_color = :white)
     eigenvector = eigvecs(matrix)
@@ -313,6 +333,7 @@ function draw_eigenvec(matrix::Matrix; color = "gray", iscord = false, cordsize 
 end
 
 # 정사영을 그리는 함수
+# v를 w에 정사영시키는 함수
 function projection(v::Vector, w::Vector;trace = true, color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
     proj = (sum(v .* w)/(norm(w)^2))*w
     plt = show_vector(proj; color = color, iscord = iscord, cordsize = cordsize, cord_color = cord_color)
