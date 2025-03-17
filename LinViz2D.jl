@@ -303,3 +303,21 @@ function linearmap(matrix::Matrix;theta = 0:0.01:2pi, color = c[3])
     plot!(res[1, :], res[2, :], lw = 3, color = color, label = false)
 end
 # 고유벡터를 그리는 함수
+function draw_eigenvec(matrix::Matrix; color = "gray", iscord = false, cordsize = 10, cord_color = :white)
+    eigenvector = eigvecs(matrix)
+    v1 = eigenvector[:, 1]
+    v2 = eigenvector[:, 2]
+    plt = show_vector(v1; color = color, iscord = iscord, cordsize = cordsize, cord_color = cord_color)
+    plt = show_vector(v2; color = color, iscord = iscord, cordsize = cordsize, cord_color = cord_color)
+    return plt
+end
+
+# 정사영을 그리는 함수
+function projection(v::Vector, w::Vector;trace = true, color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)
+    proj = (sum(v .* w)/(norm(w)^2))*w
+    plt = show_vector(proj; color = color, iscord = iscord, cordsize = cordsize, cord_color = cord_color)
+    if trace
+        plt = plot!([v[1], proj[1]], [v[2], proj[2]], ls =:dash, color = :gray, lw = 3, label = false)
+    end
+    return plt
+end
