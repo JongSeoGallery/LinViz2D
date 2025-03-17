@@ -47,12 +47,20 @@ include("LinViz2D.jl")
         * `size`: 그림 크기 (기본값: `(800, 600)`).
         * `dpi`: 해상도 (dots per inch) (기본값: `100`).
 
+- 예제
+```julia
+```
+
 * **`grid(x::Int64, y::Int64, matrix::Matrix; show = [-x, x, -y, y] ,bg="black",gc = c[1], grid = true,showaxis = true, size = (800, 600), dpi = 100)`**
 
     * **`x::Int64`**: x축의 양의 방향으로의 최댓값 (정수형).
     * **`y::Int64`**: y축의 양의 방향으로의 최댓값 (정수형).
     * **`matrix::Matrix`**: 2x2 행렬 (행렬형). 이 행렬은 격자에 선형 변환을 적용합니다.
     * **키워드 인자**: 위와 동일.
+ 
+- 예제
+```julia
+```
 
 #### 2. `grid_sb` 함수
 
@@ -63,6 +71,10 @@ include("LinViz2D.jl")
     * **`x::Int64`**: x축의 양의 방향으로의 최댓값 (정수형).
     * **`y::Int64`**: y축의 양의 방향으로의 최댓값 (정수형).
     * **키워드 인자**: `grid` 함수의 첫 번째 정의와 동일합니다. 추가적으로 표준 기저 벡터가 그려집니다.
+ 
+- 예제
+```julia
+```
 
 * **`grid_sb(x::Int64, y::Int64, matrix::Matrix; show = [-x, x, -y, y], bg="black",gc = c[1], grid = true, showaxis = true, size = (800, 600), dpi = 100)`**
 
@@ -70,6 +82,10 @@ include("LinViz2D.jl")
     * **`y::Int64`**: y축의 양의 방향으로의 최댓값 (정수형).
     * **`matrix::Matrix`**: 2x2 행렬 (행렬형). 이 행렬은 격자와 표준 기저 벡터 모두에 선형 변환을 적용합니다.
     * **키워드 인자**: 위와 동일. 변환된 표준 기저 벡터가 그려집니다.
+  
+- 예제
+```julia
+```
 
 #### 3. `show_vector` 함수
 
@@ -83,6 +99,10 @@ include("LinViz2D.jl")
         * `iscord`: 벡터의 좌표를 표시할지 여부 (기본값: `false`).
         * `cordsize`: 좌표 텍스트 크기 (기본값: `10`).
         * `cord_color`: 좌표 텍스트 색상 (기본값: `:white`).
+     
+- 예제
+```julia
+```
 
 * **`show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)`**
 
@@ -90,11 +110,19 @@ include("LinViz2D.jl")
     * **`p2::Vector`**: 벡터의 끝점 좌표 (벡터형). 이 함수는 점 `p1`에서 시작하여 점 `p2`에서 끝나는 화살표를 그립니다.
     * **키워드 인자**: 위와 동일합니다. 좌표는 `p2 - p1`으로 계산된 상대적인 벡터를 기준으로 표시됩니다.
 
+ - 예제
+```julia
+```
+
 * **`show_vector(vector::Vector, matrix::Matrix; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)`**
 
     * **`vector::Vector`**: 표시할 2차원 벡터 (벡터형).
     * **`matrix::Matrix`**: 2x2 변환 행렬 (행렬형). 이 함수는 먼저 주어진 벡터에 행렬을 곱하여 선형 변환을 적용한 다음, 변환된 벡터를 원점에서 시작하는 화살표로 그립니다.
     * **키워드 인자**: 위와 동일합니다. 좌표는 변환된 벡터를 기준으로 표시됩니다.
+ 
+- 예제
+```julia
+```
 
 #### 4. `span` 함수
 
@@ -107,6 +135,10 @@ include("LinViz2D.jl")
         * `color`: 스팬 선의 색상 (기본값: `palette(:default)[1]`).
         * `t`: 스팬을 그릴 범위의 스케일 (기본값: `5`). 선은 `-t * vector`에서 `t * vector`까지 그려집니다.
         * `label`: 레이블 표시 여부 (기본값: `false`). `true`로 설정하면 "span of (vector)" 형태의 레이블이 표시됩니다.
+     
+- 예제
+```julia
+```
 
 #### 5. `viz_det` 함수
 
@@ -121,6 +153,10 @@ include("LinViz2D.jl")
         * `showarea`: 행렬식 값 (넓이)을 표시할지 여부 (기본값: `true`).
         * `afs`: 넓이 텍스트 크기 (기본값: `10`).
         * `afc`: 넓이 텍스트 색상 (기본값: `:white`).
+     
+- 예제
+```julia
+```
 
 #### 6. `linearmap` 함수
 
@@ -131,6 +167,10 @@ include("LinViz2D.jl")
     * **`vector::Vector`**: 선형 변환을 적용할 2차원 벡터 (벡터형).
     * **`matrix::Matrix`**: 2x2 변환 행렬 (행렬형). 이 함수는 주어진 벡터에 행렬을 곱하여 선형 변환을 적용하고, `show_vector` 함수를 사용하여 변환된 벡터를 그립니다.
     * **키워드 인자**: `show_vector` 함수의 키워드 인자와 동일합니다.
+ 
+- 예제
+```julia
+```
 
 * **`linearmap(matrix::Matrix; theta = 0:0.01:2pi, color = c[3])`**
 
@@ -138,6 +178,10 @@ include("LinViz2D.jl")
     * **키워드 인자**:
         * `theta`: 단위 원을 그리기 위한 각도 범위 (기본값: `0:0.01:2pi`).
         * `color`: 변환된 단위 원의 색상 (기본값: `c[3]`). 이 함수는 단위 원의 각 점에 주어진 행렬을 곱하여 선형 변환을 적용하고, 변환된 모양을 그립니다.
+     
+- 예제
+```julia
+```
 
 #### 7. `unit_circ` 함수
 
@@ -148,6 +192,10 @@ include("LinViz2D.jl")
     * **키워드 인자**:
         * `theta`: 원을 그리기 위한 각도 범위 (기본값: `0:0.01:2pi`).
         * `color`: 원의 색상 (기본값: `c[1]`).
+     
+- 예제
+```julia
+```
 
 #### 8. `draw_eigenvec` 함수
 
@@ -157,6 +205,10 @@ include("LinViz2D.jl")
 
     * **`matrix::Matrix`**: 고유벡터를 계산할 2x2 행렬 (행렬형).
     * **키워드 인자**: `show_vector` 함수의 키워드 인자와 유사합니다. 고유벡터는 회색으로 그려집니다.
+ 
+- 예제
+```julia
+```
 
 #### 9. `projection` 함수
 
@@ -170,3 +222,7 @@ include("LinViz2D.jl")
         * `trace`: 원래 벡터에서 정사영된 벡터로 이어지는 점선을 그릴지 여부 (기본값: `true`).
         * `color`: 정사영된 벡터의 색상 (기본값: `palette(:default)[2]`).
         * `iscord`, `cordsize`, `cord_color`: `show_vector` 함수의 키워드 인자와 동일합니다.
+
+- 예제
+```julia
+```
