@@ -51,7 +51,7 @@ include("LinViz2D.jl")
 ```julia
 grid(4,2)
 ```
-(https://github.com/user-attachments/assets/f5711eae-673b-48fd-be00-1348e760def0)
+![Sample Image](https://github.com/user-attachments/assets/f5711eae-673b-48fd-be00-1348e760def0)
 
 * **`grid(x::Int64, y::Int64, matrix::Matrix; show = [-x, x, -y, y] ,bg="black",gc = c[1], grid = true,showaxis = true, size = (800, 600), dpi = 100)`**
 
@@ -62,7 +62,11 @@ grid(4,2)
  
 - 예제
 ```julia
+matrix = [1 1/2;1/2 1]
+grid(8,8, matrix, show = [-4, 4, -4, 4])
 ```
+![Image](https://github.com/user-attachments/assets/456075ab-81f4-44d8-a925-d334582a0601)
+
 
 #### 2. `grid_sb` 함수
 
@@ -76,7 +80,9 @@ grid(4,2)
  
 - 예제
 ```julia
+grid_sb(4, 2)
 ```
+![Image](https://github.com/user-attachments/assets/094024fc-497f-45e7-a534-375d50f243ea)
 
 * **`grid_sb(x::Int64, y::Int64, matrix::Matrix; show = [-x, x, -y, y], bg="black",gc = c[1], grid = true, showaxis = true, size = (800, 600), dpi = 100)`**
 
@@ -87,7 +93,11 @@ grid(4,2)
   
 - 예제
 ```julia
+matrix = [1 1/2;1/2 1]
+grid_sb(8, 8, matrix, show = [-4, 4,-4, 4])
 ```
+![Image](https://github.com/user-attachments/assets/62ca7f37-02fb-4633-9dd0-6ceca7f626aa)
+
 
 #### 3. `show_vector` 함수
 
@@ -104,7 +114,10 @@ grid(4,2)
      
 - 예제
 ```julia
+grid(4, 2)
+show_vector([2, 1], color = "pink", iscord = true)
 ```
+![Image](https://github.com/user-attachments/assets/bc22210e-51ae-4edb-949a-09767e601cf9)
 
 * **`show_vector(p1::Vector, p2::Vector; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)`**
 
@@ -114,7 +127,11 @@ grid(4,2)
 
  - 예제
 ```julia
+grid(4, 3)
+show_vector([2, 1], [-2, -1.5], color = "pink", iscord = true, cordsize = 15)
 ```
+![Image](https://github.com/user-attachments/assets/eb86395a-92d7-4ece-b656-9c2b9b10dc2b)
+
 
 * **`show_vector(vector::Vector, matrix::Matrix; color = palette(:default)[2], iscord = false, cordsize = 10, cord_color = :white)`**
 
@@ -124,7 +141,21 @@ grid(4,2)
  
 - 예제
 ```julia
+matrix = [1 2;2 1]
+grid(4, 4, matrix)
+show_vector([1, 0], matrix, iscord = true, cord = false)
+show_vector([0, 1], matrix,color = c[3], iscord = true, cord = false)
 ```
+![Image](https://github.com/user-attachments/assets/f7b985db-3a1e-4cb3-9449-99a3278d6773)
+
+```julia
+c = palette(:default)
+matrix = [1 2;2 1]
+grid(4, 4, matrix)
+show_vector([1, 0], matrix, iscord = true, cord = true)
+show_vector([0, 1], matrix,color = c[3], iscord = true, cord = true)
+```
+![Image](https://github.com/user-attachments/assets/3ac79825-afa9-4f53-87d5-2e4c131db5de)
 
 #### 4. `span` 함수
 
@@ -140,7 +171,11 @@ grid(4,2)
      
 - 예제
 ```julia
+grid(4, 2)
+span([2, 1], t = 0.5)
+span([-2, 1], t = 2, color = "gray")
 ```
+![Image](https://github.com/user-attachments/assets/97366fa3-881c-4791-bad6-04363d127059)
 
 #### 5. `viz_det` 함수
 
@@ -158,7 +193,11 @@ grid(4,2)
      
 - 예제
 ```julia
+c = palette(:default)
+grid(4, 4)
+viz_det([2 1;1 2], color = c[5])
 ```
+![Image](https://github.com/user-attachments/assets/8e579dfc-270a-4fc5-bb73-53c40d5eff06)
 
 #### 6. `linearmap` 함수
 
@@ -172,7 +211,10 @@ grid(4,2)
  
 - 예제
 ```julia
+matrix = [0 2;1 0]
+linearmap([1, 1], matrix, color = c[3])
 ```
+![Image](https://github.com/user-attachments/assets/3c590c76-1b04-4505-aff9-512363708ab9)
 
 * **`linearmap(matrix::Matrix; theta = 0:0.01:2pi, color = c[3])`**
 
@@ -183,7 +225,13 @@ grid(4,2)
      
 - 예제
 ```julia
+grid(3, 3)
+unit_circ()
+matrix = [1 2;2 1]
+linearmap(matrix, color = c[2])
 ```
+![Image](https://github.com/user-attachments/assets/7b7b5981-e1c2-4143-8d69-0b10121828d6)
+
 
 #### 7. `unit_circ` 함수
 
@@ -197,7 +245,16 @@ grid(4,2)
      
 - 예제
 ```julia
+grid(2,2)
+unit_circ()
 ```
+![Image](https://github.com/user-attachments/assets/6ddc47df-0dff-4127-9ff1-a293cc8587f2)
+
+```julia
+grid(2,2)
+unit_circ(theta = 0:0.1:π)
+```
+![Image](https://github.com/user-attachments/assets/b69932a3-06ba-4e25-bb0b-e361f18228e9)
 
 #### 8. `draw_eigenvec` 함수
 
@@ -210,7 +267,14 @@ grid(4,2)
  
 - 예제
 ```julia
+grid(3, 3)
+unit_circ()
+matrix = [1 2;2 1]
+linearmap(matrix, color = c[2])
+draw_eigenvec(matrix, iscord = true)
 ```
+![Image](https://github.com/user-attachments/assets/3a7835fa-fcb8-4f6d-8c19-0d9566734abd)
+
 
 #### 9. `projection` 함수
 
@@ -227,4 +291,9 @@ grid(4,2)
 
 - 예제
 ```julia
+grid(3,3, show = [0, 3, 0, 3])
+show_vector([3, 1])
+show_vector([1, 3], color = c[3])
+projection([1, 3], [3, 1], color = c[1])
 ```
+![Image](https://github.com/user-attachments/assets/80e02d74-7dac-449a-83c0-950b6a781c44)
