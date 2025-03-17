@@ -49,7 +49,9 @@ include("LinViz2D.jl")
 
 - 예제
 ```julia
+grid(4,2)
 ```
+(https://github.com/user-attachments/assets/f5711eae-673b-48fd-be00-1348e760def0)
 
 * **`grid(x::Int64, y::Int64, matrix::Matrix; show = [-x, x, -y, y] ,bg="black",gc = c[1], grid = true,showaxis = true, size = (800, 600), dpi = 100)`**
 
